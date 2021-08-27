@@ -175,7 +175,7 @@ class MenTennisPlayer:
                             field = "gazon"
                         if "terre battue" in field:
                             field = "terre battue"
-                        # print(field, player1, player2, setP1, setP2, matchResult)
+
                         lineResults.append(ranking)
                         lineResults.append(field)
                         lineResults.append(player1)
@@ -184,14 +184,14 @@ class MenTennisPlayer:
                         lineResults.append(setP2)
                         lineResults.append(matchResult)
                         allResults.append(lineResults)
-                        # print(lineResults)
+
                     # Going forward to next 'div'
                     data = data.find_next("div")
             except ValueError:
                 pass
 
             j += 1
-        #print(allResults)
+
         # Saving to csv file
         self.saveToCsv(
             "csv/results.csv",
