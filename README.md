@@ -14,6 +14,7 @@ This is why I used Selenium to automate these actions.
 As a result we'll get 2 csv files:
 - ranking.csv (the current ranking of tennis male players)
 - result.csv (some match results for each player)
+
 With these acquired data we'll be able to go further in data preparation (part 2) for our ML project.
   
 This program is developed with Python v3.8 using a virtual environment.
