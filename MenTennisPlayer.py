@@ -159,7 +159,7 @@ class MenTennisPlayer:
                     if len(val) > 40 and "dur" not in val and "gazon" not in val and "terre battue" not in val:
                         ranking = int(resultList.find("span", "participant-detail-rank") \
                                       .text.replace("ATP: ", "").replace(".", ""))
-                        pattern = re.search(r'[a-zA-Z]', val, re.I)
+                        pattern = re.search(r'[A-Z]', val, re.I)
                         firstLetter = pattern.start()
                         firstPlayerIndexStart = firstLetter
                         firstPlayerIndexEnd = val.index(")")
