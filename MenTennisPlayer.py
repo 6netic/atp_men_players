@@ -4,6 +4,7 @@ from selenium import webdriver
 import time
 import codecs
 import csv
+import re
 
 
 class MenTennisPlayer:
@@ -158,7 +159,9 @@ class MenTennisPlayer:
                     if len(val) > 40 and "dur" not in val and "gazon" not in val and "terre battue" not in val:
                         ranking = int(resultList.find("span", "participant-detail-rank") \
                                       .text.replace("ATP: ", "").replace(".", ""))
-                        firstPlayerIndexStart = 12
+                        pattern = re.search(r'[a-zA-Z]', val, re.I)
+                        firstLetter = pattern.start()
+                        firstPlayerIndexStart = firstLetter
                         firstPlayerIndexEnd = val.index(")")
                         player1 = val[firstPlayerIndexStart:firstPlayerIndexEnd + 1]
                         secondPlayerIndexStart = firstPlayerIndexEnd + 1

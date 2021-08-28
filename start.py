@@ -18,4 +18,3 @@ htmlFile = "ranking/atp_men_rank.html"
 matchResultUrls = menAtpPlayer.getUrlOfMatchResultForAllMenPlayers(htmlFile)
 # Creating csv file containing match results of the 100 first ATP men players
 menAtpPlayer.getScoreResults(matchResultUrls)
-
