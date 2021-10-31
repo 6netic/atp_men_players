@@ -1,20 +1,45 @@
-from MenTennisPlayer import MenTennisPlayer
+from tennisPlayer import tennisPlayer
 
 
-# Defining Urls
+# Defining Urls for Men and Women Tennis players
 atpMenRankingUrl = "https://www.flashscore.fr/tennis/classements/atp/"
+atpWomenRankingUrl = "https://www.flashscore.fr/tennis/classements/wta/"
 
-# Instanciating the class
-menAtpPlayer = MenTennisPlayer(atpMenRankingUrl)
+print("******************* Get Tennis Players Ranking *************************")
+print("1 - ATP Men Ranking")
+print("2 - ATP Women Ranking")
+print("************************************************************************")
+loop_menu = True
+while loop_menu:
+    myChoice = input("Choose 1 or 2: ")
+    try:
+        myChoice = int(myChoice)
+        if myChoice == 1:
+            urlRanking = atpMenRankingUrl
+            loop_menu = False
+        if myChoice == 2:
+            urlRanking = atpWomenRankingUrl
+            loop_menu = False
+    except:
+        pass
 
-# Getting ranking page
-menAtpPlayer.getAtpMenRanking()
-# Creating csv file containing the 100 first atp men players
-menAtpPlayer.createRankingCsvFile("ranking/atp_men_rank.html")
+# Creating object to instantiate the class
+players = tennisPlayer(urlRanking)
 
-# Getting match results
-htmlFile = "ranking/atp_men_rank.html"
-# Getting urls of all match results for those 300 men tennis players
-matchResultUrls = menAtpPlayer.getUrlOfMatchResultForAllMenPlayers(htmlFile)
-# Creating csv file containing match results of the 100 first ATP men players
-menAtpPlayer.getScoreResults(matchResultUrls)
+if urlRanking == atpMenRankingUrl:
+    # Getting ranking of tennis players into HTML page
+    players.getAtpRanking("men")
+    # Creating csv file containing the 300 first atp men players
+    players.createRankingCsvFile("ranking/atp_rank_men.html", "men")
+    # Getting urls for match results
+    htmlFile = "ranking/atp_rank_men.html"
+    # Getting urls of all match results for those 300 tennis players
+    matchResultUrls = players.getUrlOfMatchResultForAllPlayers(htmlFile)
+    # Creating csv file containing match results of the 300 first ATP men players
+    players.getScoreResults(matchResultUrls, "men")
+if urlRanking == atpWomenRankingUrl:
+    players.getAtpRanking("women")
+    players.createRankingCsvFile("ranking/atp_rank_women.html", "women")
+    htmlFile = "ranking/atp_rank_women.html"
+    matchResultUrls = players.getUrlOfMatchResultForAllPlayers(htmlFile)
+    players.getScoreResults(matchResultUrls, "women")
