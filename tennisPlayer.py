@@ -5,7 +5,6 @@ import time
 import codecs
 import csv
 import re
-from math import ceil
 
 
 class tennisPlayer:
@@ -118,7 +117,7 @@ class tennisPlayer:
 
 
     def getScoreResults(self, urlList, gender):
-        """ This method creates a csv file containing some matches of the 100 first men players """
+        """ This method creates a csv file containing some matches of the 300 first tennis players """
 
         allResults = []
         j = 1
